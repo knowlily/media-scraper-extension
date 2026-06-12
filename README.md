@@ -5,6 +5,7 @@
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue)](https://developer.chrome.com/docs/extensions/mv3/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue)](https://www.typescriptlang.org/)
 [![Vite](https://img.shields.io/badge/Vite-6-purple)](https://vitejs.dev/)
+[![Release](https://img.shields.io/badge/release-v0.1.0-brightgreen)](https://github.com/knowlily/media-scraper-extension/releases)
 
 ## 功能
 
@@ -18,12 +19,14 @@
 
 ## 安装
 
-1. 克隆或下载本仓库
-2. 打开 `chrome://extensions` → 开启「开发者模式」
-3. 点击「加载已解压的扩展程序」→ 选择 `dist/` 目录
-4. 固定扩展图标方便使用
+**方式一：直接下载（推荐）**
 
-## 从源码构建
+从 [Releases](https://github.com/knowlily/media-scraper-extension/releases) 下载最新版 `media-scraper-extension.zip`，解压后：
+
+1. 打开 `chrome://extensions` → 开启「开发者模式」
+2. 点击「加载已解压的扩展程序」→ 选择解压后的文件夹
+
+**方式二：从源码构建**
 
 ```bash
 pnpm install
