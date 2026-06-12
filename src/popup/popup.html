@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media Scraper</title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+  <!-- ========== INPUT MODE ========== -->
+  <div id="input-mode" class="ms-mode">
+    <header class="popup-header">
+      <span class="header-icon">🎬</span>
+      <h1 class="header-title">Media Scraper</h1>
+    </header>
+
+    <div class="url-section">
+      <input
+        type="text"
+        id="urlInput"
+        class="url-input"
+        placeholder="https://example.com"
+        autofocus
+      />
+      <div class="url-actions">
+        <button id="grabCurrentBtn" class="btn btn-primary">
+          📌 抓当前页面
+        </button>
+        <button id="batchScrapeBtn" class="btn btn-secondary">
+          🔍 输入URL
+        </button>
+      </div>
+    </div>
+
+    <div id="inputStatus" class="status-message" style="display: none;"></div>
+
+    <footer class="popup-footer">
+      <button id="historyBtn" class="btn btn-link">📋 历史</button>
+      <button id="settingsBtn" class="btn btn-link">⚙️ 设置</button>
+    </footer>
+  </div>
+
+  <!-- ========== SCRAPING / RESULTS MODE ========== -->
+  <div id="results-mode" class="ms-mode" style="display: none;">
+    <!-- Header bar -->
+    <div class="ms-header">
+      <div class="ms-header-left">
+        <span class="ms-header-icon">🎬</span>
+        <span class="ms-header-title">Media Scraper</span>
+      </div>
+      <button id="ms-back-btn" class="ms-header-back" title="返回 (Esc)">✕ 返回</button>
+      <button id="ms-rescrape-btn" class="ms-header-rescrape" title="重新抓取">🔄 重新抓取</button>
+    </div>
+
+    <!-- Status / progress line -->
+    <div class="ms-status-bar" id="ms-status-bar">
+      <span class="ms-spinner" id="ms-spinner"></span>
+      <span id="ms-status-text">正在抓取...</span>
+    </div>
+
+    <!-- Tab row -->
+    <div class="ms-tabs" id="ms-tabs">
+      <button class="ms-tab ms-active" data-ms-tab="image">📷 图片<span class="ms-tab-count" id="ms-count-image">0</span></button>
+      <button class="ms-tab" data-ms-tab="video">🎬 视频<span class="ms-tab-count" id="ms-count-video">0</span></button>
+      <button class="ms-tab" data-ms-tab="audio">🎵 音频<span class="ms-tab-count" id="ms-count-audio">0</span></button>
+      <button class="ms-tab" data-ms-tab="document">📄 文档<span class="ms-tab-count" id="ms-count-document">0</span></button>
+    </div>
+
+    <!-- Search row -->
+    <div class="ms-search-row">
+      <input class="ms-search-input" id="ms-search-input" type="text" placeholder="搜索文件名..." />
+      <button class="ms-btn-select-all" id="ms-select-all-btn">全选</button>
+    </div>
+
+    <!-- Video player (shown when playing a video) -->
+    <div id="ms-video-player" style="display:none; background:#000; border-radius:6px; overflow:hidden; margin-bottom:8px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:4px 8px;background:#2a2a2a;">
+        <span style="color:#aaa;font-size:11px;">🎬 视频预览</span>
+        <button id="ms-video-close" style="background:none;border:none;color:#aaa;cursor:pointer;font-size:14px;">✕</button>
+      </div>
+      <video id="ms-video-el" style="width:100%;max-height:220px;display:block;background:#000;" controls autoplay></video>
+    </div>
+
+    <!-- Virtual scroll list -->
+    <div class="ms-list" id="ms-list">
+      <div class="ms-items-container" id="ms-items-container"></div>
+    </div>
+
+    <!-- Selection bar -->
+    <div class="ms-selection-bar" id="ms-selection-bar" style="display:none;">
+      <span class="ms-selection-info" id="ms-selection-info">已选 <strong>0</strong> 个</span>
+      <button class="ms-btn-copy" id="ms-copy-btn">📋 复制URL</button>
+      <button class="ms-btn-download" id="ms-download-btn">⬇ 下载</button>
+    </div>
+  </div>
+
+  <!-- ========== IMAGE PREVIEW OVERLAY (attached to body, shared) ========== -->
+  <div id="ms-preview-overlay" class="ms-image-preview" style="display:none;">
+    <div class="ms-preview-backdrop"></div>
+    <div class="ms-preview-content">
+      <button class="ms-preview-close">✕</button>
+      <img id="ms-preview-img" src="" alt="" />
+      <div class="ms-preview-info" id="ms-preview-info"></div>
+    </div>
+  </div>
+
+  <script type="module" src="popup.ts"></script>
+</body>
+</html>

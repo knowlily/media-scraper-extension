@@ -1,0 +1,22 @@
+{
+  "name": "media-scraper-extension",
+  "version": "0.1.0",
+  "description": "Media Scraper Chrome Extension — 一键提取网页中所有图片、视频、音频和文档",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@media-scraper/core": "file:../mount/packages/core"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.270",
+    "jsdom": "^29.1.1",
+    "playwright": "^1.60.0",
+    "typescript": "^5.5",
+    "vite": "^6"
+  }
+}

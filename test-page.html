@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta property="og:image" content="https://picsum.photos/1200/800">
+<meta property="og:image:url" content="https://picsum.photos/800/600">
+<meta name="twitter:image" content="https://picsum.photos/1000/500">
+<title>Media Scraper 测试页面</title>
+<style>
+  body { font-family: sans-serif; padding: 20px; }
+  .section { margin: 20px 0; padding: 10px; border: 1px solid #ccc; }
+  img { max-width: 200px; }
+  .lazy-bg { width: 300px; height: 200px; background-image: url(https://picsum.photos/300/200); }
+</style>
+</head>
+<body>
+<h1>🎬 Media Scraper 测试页面</h1>
+
+<div class="section">
+  <h2>标准图片</h2>
+  <img src="https://picsum.photos/400/300" alt="test image 1">
+  <img src="https://picsum.photos/500/400" alt="test image 2">
+  <img srcset="https://picsum.photos/800/600 2x, https://picsum.photos/400/300 1x" src="https://picsum.photos/400/300" alt="srcset test">
+</div>
+
+<div class="section">
+  <h2>Picture 元素</h2>
+  <picture>
+    <source srcset="https://picsum.photos/1200/900" media="(min-width: 800px)">
+    <source srcset="https://picsum.photos/600/450">
+    <img src="https://picsum.photos/600/450" alt="picture test">
+  </picture>
+</div>
+
+<div class="section">
+  <h2>懒加载图片</h2>
+  <img data-src="https://picsum.photos/700/500" src="" alt="lazy 1" class="lazy">
+  <img data-original="https://picsum.photos/600/400" src="" alt="lazy 2" class="lazy">
+  <img loading="lazy" src="https://picsum.photos/550/350" alt="native lazy">
+</div>
+
+<div class="section">
+  <h2>CSS 背景图</h2>
+  <div class="lazy-bg"></div>
+  <div style="width: 200px; height: 150px; background-image: url(https://picsum.photos/200/150);"></div>
+</div>
+
+<div class="section">
+  <h2>视频</h2>
+  <video src="https://www.w3schools.com/html/mov_bbb.mp4" controls width="320"></video>
+  <video controls width="320">
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="section">
+  <h2>音频</h2>
+  <audio src="https://www.w3schools.com/html/horse.mp3" controls></audio>
+</div>
+
+<div class="section">
+  <h2>文档链接</h2>
+  <a href="https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf">PDF 文档</a> |
+  <a href="https://example.com/file.docx">Word 文档</a> |
+  <a href="https://example.com/archive.zip">压缩包</a>
+</div>
+
+<div class="section">
+  <h2>YouTube 嵌入</h2>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube"></iframe>
+</div>
+
+<div class="section">
+  <h2>抖音 / TikTok 嵌入</h2>
+  <!-- Douyin embed iframe (simulated) -->
+  <iframe src="https://open.douyin.com/player/video?vid=7123456789012345678" title="抖音视频"></iframe>
+  <!-- Douyin share link -->
+  <a href="https://www.douyin.com/video/7123456789012345678">抖音视频链接</a>
+  <!-- Douyin iesdouyin CDN -->
+  <iframe src="https://www.iesdouyin.com/share/video/7123456789012345678/"></iframe>
+  <!-- TikTok embed -->
+  <iframe src="https://www.tiktok.com/embed/7234567890123456789" title="TikTok"></iframe>
+  <!-- TikTok video link -->
+  <a href="https://www.tiktok.com/@user/video/7234567890123456789">TikTok 视频链接</a>
+  <!-- Douyin modal_id -->
+  <a href="https://www.douyin.com/user/MS4wLjABAAAAxxx?modal_id=7123456789012345678">抖音用户页视频</a>
+</div>
+
+</body>
+</html>

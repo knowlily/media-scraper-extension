@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Media Scraper",
+  "version": "0.1.0",
+  "description": "一键提取网页中所有图片、视频、音频和文档",
+  "permissions": ["activeTab", "downloads", "scripting", "storage", "tabs"],
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "Media Scraper"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content.js"],
+    "run_at": "document_idle"
+  }],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

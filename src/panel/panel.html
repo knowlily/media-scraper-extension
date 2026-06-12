@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Media Scraper — 抓取结果</title>
+  <link rel="stylesheet" href="panel.css" />
+</head>
+<body>
+  <div class="panel-container">
+    <!-- Header -->
+    <header class="panel-header">
+      <div class="header-left">
+        <span class="header-icon">🎬</span>
+        <h1 class="header-title">Media Scraper</h1>
+        <span id="pageTitle" class="page-title"></span>
+      </div>
+      <div class="header-right">
+        <span id="totalCount" class="total-count"></span>
+      </div>
+    </header>
+
+    <!-- Toolbar -->
+    <div class="toolbar">
+      <!-- Type tabs -->
+      <div class="type-tabs" id="typeTabs">
+        <button class="tab active" data-type="image">
+          🖼️ 图片 <span class="tab-count" id="imageCount">0</span>
+        </button>
+        <button class="tab" data-type="video">
+          🎬 视频 <span class="tab-count" id="videoCount">0</span>
+        </button>
+        <button class="tab" data-type="audio">
+          🎵 音频 <span class="tab-count" id="audioCount">0</span>
+        </button>
+        <button class="tab" data-type="document">
+          📄 文档 <span class="tab-count" id="docCount">0</span>
+        </button>
+      </div>
+
+      <!-- Filter bar -->
+      <div class="filter-bar">
+        <select id="typeFilter" class="filter-select">
+          <option value="">全部类型</option>
+          <option value="image">图片</option>
+          <option value="video">视频</option>
+          <option value="audio">音频</option>
+          <option value="document">文档</option>
+        </select>
+        <input
+          type="text"
+          id="sizeFilter"
+          class="filter-input"
+          placeholder="最小尺寸 (如 100x100 或 10KB)"
+        />
+        <button id="selectAllBtn" class="btn btn-sm">全选</button>
+        <button id="deselectAllBtn" class="btn btn-sm">取消全选</button>
+      </div>
+    </div>
+
+    <!-- Results grid -->
+    <div class="results-area" id="resultsArea">
+      <div id="mediaGrid" class="media-grid"></div>
+      <div id="emptyState" class="empty-state" style="display: none;">
+        <span class="empty-icon">📭</span>
+        <p>没有找到媒体资源</p>
+      </div>
+    </div>
+
+    <!-- Selection bar (bottom) -->
+    <div class="selection-bar" id="selectionBar" style="display: none;">
+      <div class="selection-info">
+        <span id="selectionText">已选 0/0</span>
+        <span class="separator">·</span>
+        <span id="selectionSize">总大小 0 B</span>
+      </div>
+      <div class="selection-actions">
+        <button id="downloadSelectedBtn" class="btn btn-primary">
+          ⬇️ 下载选中
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Image preview overlay -->
+  <div class="preview-overlay" id="previewOverlay" style="display: none;">
+    <div class="preview-backdrop" id="previewBackdrop"></div>
+    <div class="preview-content">
+      <button class="preview-close" id="previewClose">✕</button>
+      <div class="preview-image-wrap">
+        <img id="previewImage" src="" alt="Preview" />
+      </div>
+      <div class="preview-meta">
+        <div class="preview-filename" id="previewFilename"></div>
+        <div class="preview-details">
+          <span id="previewDimensions"></span>
+          <span class="separator">·</span>
+          <span id="previewSize"></span>
+          <span class="separator">·</span>
+          <a id="previewSourceUrl" href="#" target="_blank" rel="noopener">查看原图</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="panel.ts"></script>
+</body>
+</html>
